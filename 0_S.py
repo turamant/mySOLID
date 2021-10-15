@@ -18,7 +18,7 @@ class Animal:
 class Fish:
     """
         Класс отвечает за инициализацию объекта "fish" с именем
-        """
+    """
 
     def __init__(self, name: str):
         self.name = name
@@ -32,19 +32,28 @@ class Fish:
 
 class Db:
     """
-    Класс отвечает за сохранение объекта "animal" в БД animal_safe
+    Класс отвечает за сохранение объекта в БД
     """
     _safe = []
     _dict = {}
 
     def save_animal(self, a: object) -> None:
+        """
+        Сохранение в список
+        """
         Db._safe.append(a)
 
     def save_animal_dict(self, i: str, a: object) -> None:
+        """
+        Сохранение в словарь
+        """
         Db._dict[i] = a
 
 class DisplayData:
-    def display_type(self, obj: object):
+    """
+        Класс отвечает за вывод на экран содержимого БД
+    """
+    def display_type(self, obj: object) -> None:
         """
            Печать данных из условной -БД-
            """
@@ -58,11 +67,16 @@ class DisplayData:
             print(k, ".", v)
 
 
+class Lion(Animal):
+    def __str__(self):
+        return f"{__class__.__name__}:{self.name}"
+
+
 def main():
     myDb = Db()
     dyTp = DisplayData()
 
-    name = ['a1', 'b2', 'c3', 'd4']
+    name = ['First', 'Second', 'Third', 'Fourth']
     for i in range(4):
         animal = Animal(name[i])
         myDb.save_animal(animal)
@@ -73,7 +87,14 @@ def main():
         myDb.save_animal(fish)
         myDb.save_animal_dict(str(i) + "-fish", fish)
 
+    for i in range(4):
+        fish = Lion(name[i])
+        myDb.save_animal(fish)
+        myDb.save_animal_dict(str(i) + "-lion", fish)
+
     dyTp.display_type(myDb)
+
+
 
 if __name__ == '__main__':
     main()
