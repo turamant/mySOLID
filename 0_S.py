@@ -43,23 +43,24 @@ class Db:
     def save_animal_dict(self, i: str, a: object) -> None:
         Db._dict[i] = a
 
+class DisplayData:
+    def display_type(self, obj: object):
+        """
+           Печать данных из условной -БД-
+           """
+        print("List out")
+        for an in enumerate(obj._safe):
+            print(an[0], '.', an[1])
 
-def display_type(obj: object) -> None:
-    """
-    Печать данных из условной -БД-
-    """
-    print("List out")
-    for an in enumerate(obj._safe):
-        print(an[0], '.', an[1])
-
-    print("-*-" * 18)
-    print("Dict out")
-    for k, v in obj._dict.items():
-        print(k, ".", v)
+        print("-*-" * 18)
+        print("Dict out")
+        for k, v in obj._dict.items():
+            print(k, ".", v)
 
 
 def main():
     myDb = Db()
+    dyTp = DisplayData()
 
     name = ['a1', 'b2', 'c3', 'd4']
     for i in range(4):
@@ -72,8 +73,7 @@ def main():
         myDb.save_animal(fish)
         myDb.save_animal_dict(str(i) + "-fish", fish)
 
-    display_type(myDb)
-
+    dyTp.display_type(myDb)
 
 if __name__ == '__main__':
     main()
