@@ -85,8 +85,8 @@ def main():
     dyTp = DisplayData()
 
     name = ['First', 'Second', 'Third', 'Fourth']
-    for i in range(4):
-        animal = Animal(name[i])
+    for i in name:
+        animal = Animal(i)
         myDb.save_animal(animal)
         myDb.save_animal_dict(str(i) + "-animal", animal)
 
