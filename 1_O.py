@@ -13,4 +13,4 @@ class Animal:
         return self.name
 
     def __str__(self):
-        return f"Animal:{self.name}"
+        return f"{__class__.__name__}: {self.name}"

@@ -17,7 +17,7 @@ class Animal:
 
 class Fish:
     """
-        Класс отвечает за инициализацию объекта "animal" с именем
+        Класс отвечает за инициализацию объекта "fish" с именем
         """
 
     def __init__(self, name: str):
@@ -43,9 +43,11 @@ class Db:
     def save_animal_dict(self, i: str, a: object) -> None:
         Db._dict[i] = a
 
-# Press the green button in the gutter to run the script.
 
 def display_type(obj: object) -> None:
+    """
+    Печать данных из условной -БД-
+    """
     print("List out")
     for an in enumerate(obj._safe):
         print(an[0], '.', an[1])
